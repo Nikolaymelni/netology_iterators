@@ -26,9 +26,18 @@ class FlatIterator:
         return self.nested_list[self.cursor]
 
 
+def flat_generator(lists):
+    for list_ in lists:
+        for item in list_:
+            yield item
+
+
 if __name__ == '__main__':
 
     for item in FlatIterator(nested_list):
         print(item)
     flat_list = [item for item in FlatIterator(nested_list)]
     print(flat_list)
+
+    for item in flat_generator(nested_list):
+        print(item)
